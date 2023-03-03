@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/dashboard.dart';
 
@@ -109,6 +107,14 @@ class LoginScreen extends StatelessWidget {
             ),
 
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
               child: const Text("Login"),
               onPressed: () {
                 Navigator.push(context,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/residents.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class Residents extends StatelessWidget {
+  const Residents({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dashboard"),
+        title: const Text("Residents"),
       ),
       body: Center(
         child: Column(
@@ -25,11 +24,9 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Residents"),
+              child: const Text("Add Residents"),
               onPressed: () {
                 // Navigation to the residents.
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Residents()));
               },
             ),
             const SizedBox(
@@ -44,13 +41,13 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Medical Records"),
+              child: const Text("Edit Residents"),
               onPressed: () {
                 // Navigation to Medical Records.
               },
             ),
             const SizedBox(
-              height: 120,
+              height: 20,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -61,7 +58,7 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Logout"),
+              child: const Text("Resident List"),
               onPressed: () {
                 // Log out.
               },
