@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_data_mobileapp/addresidents.dart';
 
 class Residents extends StatelessWidget {
   const Residents({super.key});
@@ -26,7 +27,9 @@ class Residents extends StatelessWidget {
               ),
               child: const Text("Add Residents"),
               onPressed: () {
-                // Navigation to the residents.
+                // Navigation to Add residents.
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Add_Residents()));
               },
             ),
             const SizedBox(
