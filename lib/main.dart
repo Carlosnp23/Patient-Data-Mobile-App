@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/dashboard.dart';
 
@@ -38,36 +40,74 @@ class LoginScreen extends StatelessWidget {
           children: [
             // Logo
             const Expanded(
-              child: Center(
-                child: Text("LOGO"),
+              child: Image(
+                image: NetworkImage(
+                    'https://avatars.githubusercontent.com/u/109951?s=400&v=4'),
               ),
             ),
 
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Email",
-                border: const OutlineInputBorder(),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    // Clear whats currently in the textfield
-                    _textEmail.clear();
-                  },
-                  icon: const Icon(Icons.clear),
-                ),
-              ),
+            const SizedBox(
+              height: 20,
             ),
-            TextField(
-              decoration: InputDecoration(
-                  hintText: "Password",
+
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 20),
+                decoration: InputDecoration(
+                  icon: const Icon(Icons.email),
+                  label: const Text("Email"),
+                  hintText: "Email",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textPassword.clear();
+                      _textEmail.clear();
                     },
                     icon: const Icon(Icons.clear),
-                  )),
+                  ),
+                ),
+              ),
             ),
+
+            const SizedBox(
+              height: 20,
+            ),
+
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextFormField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                decoration: InputDecoration(
+                    icon: const Icon(Icons.password),
+                    label: const Text("Password"),
+                    hintText: "Password",
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        // Clear whats currently in the textfield
+                        _textPassword.clear();
+                      },
+                      icon: const Icon(Icons.clear),
+                    )),
+              ),
+            ),
+
+            const SizedBox(
+              height: 20,
+            ),
+
             ElevatedButton(
               child: const Text("Login"),
               onPressed: () {
