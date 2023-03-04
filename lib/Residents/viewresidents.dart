@@ -20,7 +20,7 @@ ListView _buildListView(BuildContext context) {
     itemCount: 16,
     itemBuilder: (_, index) {
       return ListTile(
-        title: Text('Resident #$index'),
+        title: Text("Resident #$index"),
         leading: const Icon(Icons.person),
         trailing: const Icon(Icons.arrow_forward),
         onTap: () {
@@ -45,10 +45,10 @@ class ViewResident extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("The Details Resident"),
+        title: Text("Resident #$index"),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 20,
@@ -90,6 +90,8 @@ class ViewResident extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
                 keyboardType: TextInputType.multiline,
+                minLines: 1,
+                maxLines: 30,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
