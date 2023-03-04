@@ -72,7 +72,7 @@ class ViewResident extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textResident_Details.text = "";
+                      _textResident_Details.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
