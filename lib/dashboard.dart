@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/Medical%20Records/medicalrecords.dart';
 import 'package:patient_data_mobileapp/Residents/residents.dart';
@@ -75,6 +77,7 @@ class Dashboard extends StatelessWidget {
               child: const Text("Logout"),
               onPressed: () {
                 // Log out.
+                exit(0);
               },
             )
           ],
