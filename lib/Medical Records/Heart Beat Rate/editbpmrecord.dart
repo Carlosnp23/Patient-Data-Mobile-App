@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Edit_BO_Record extends StatelessWidget {
-  const Edit_BO_Record({super.key});
+class Edit_BPM_Record extends StatelessWidget {
+  const Edit_BPM_Record({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Edit BO Record"),
+          title: const Text("Edit BPM Record"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -63,7 +63,7 @@ class DetailResidentRecord extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit BO Record"),
+        title: const Text("Edit BPM Record"),
       ),
       body: Center(
         child: Column(
@@ -115,14 +115,14 @@ class Resident_Record extends StatelessWidget {
 
   final _textName = TextEditingController();
   final _textMedicalRecordNo = TextEditingController();
-  final _textBOReading = TextEditingController();
+  final _textBPMReading = TextEditingController();
   final _textDateTime = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit BO Record No. #$index"),
+        title: Text("Edit BPM Record No. #$index"),
       ),
       body: Center(
         child: Column(
@@ -201,13 +201,13 @@ class Resident_Record extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("BO Reading"),
-                  hintText: "BO Reading #$index",
+                  label: const Text("BPM Reading"),
+                  hintText: "BPM Reading #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textBOReading.clear();
+                      _textBPMReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),

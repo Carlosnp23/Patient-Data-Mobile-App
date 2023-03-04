@@ -115,7 +115,7 @@ class Resident_Record extends StatelessWidget {
 
   final _textName = TextEditingController();
   final _textMedicalRecordNo = TextEditingController();
-  final _textBPReading = TextEditingController();
+  final _textRPReading = TextEditingController();
   final _textDateTime = TextEditingController();
 
   @override
@@ -207,7 +207,7 @@ class Resident_Record extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textBPReading.clear();
+                      _textRPReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),

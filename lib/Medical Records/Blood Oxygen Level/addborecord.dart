@@ -6,7 +6,7 @@ class Add_BO_Record extends StatelessWidget {
   Add_BO_Record({super.key});
 
   final _textDateTime = TextEditingController();
-  final _textBPReading = TextEditingController();
+  final _textBOReading = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class Add_BO_Record extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textBPReading.clear();
+                      _textBOReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),

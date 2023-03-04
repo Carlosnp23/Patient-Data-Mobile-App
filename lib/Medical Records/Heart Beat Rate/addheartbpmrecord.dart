@@ -2,17 +2,17 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Add_RP_Record extends StatelessWidget {
-  Add_RP_Record({super.key});
+class Add_Heart_beat_BPM_Record extends StatelessWidget {
+  Add_Heart_beat_BPM_Record({super.key});
 
   final _textDateTime = TextEditingController();
-  final _textRPReading = TextEditingController();
+  final _textBPMReading = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add RP Record"),
+        title: const Text("Add BPM Record"),
       ),
       body: Center(
         child: Column(
@@ -82,13 +82,13 @@ class Add_RP_Record extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("RP Reading"),
-                  hintText: "RP Reading",
+                  label: const Text("BPM Reading"),
+                  hintText: "BPM Reading",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textRPReading.clear();
+                      _textBPMReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -109,7 +109,7 @@ class Add_RP_Record extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Save RP Record"),
+              child: const Text("Save BPM Record"),
               onPressed: () {
                 // SAVE
               },

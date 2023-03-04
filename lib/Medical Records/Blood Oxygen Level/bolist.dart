@@ -38,7 +38,7 @@ class ResidentRecord extends StatelessWidget {
   ResidentRecord(this.index, {super.key});
 
   final _textResidentDetails = TextEditingController();
-  final _textBPReadingInfo = TextEditingController();
+  final _textBOReadingInfo = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class ResidentRecord extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textBPReadingInfo.clear();
+                      _textBOReadingInfo.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
