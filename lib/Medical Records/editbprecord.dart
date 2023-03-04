@@ -122,7 +122,7 @@ class Resident_Record extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("The Details Resident"),
+        title: Text("Record No. #$index"),
       ),
       body: Center(
         child: Column(
@@ -144,7 +144,7 @@ class Resident_Record extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Name"),
-                  hintText: "Resident Name",
+                  hintText: "Resident #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -173,7 +173,7 @@ class Resident_Record extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Medical Record No."),
-                  hintText: "Medical Record No.",
+                  hintText: "Record #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -202,7 +202,7 @@ class Resident_Record extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("BP Reading"),
-                  hintText: "BP Reading",
+                  hintText: "BP Reading #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -231,7 +231,7 @@ class Resident_Record extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Date / Time"),
-                  hintText: "Date / Time",
+                  hintText: "Date / Time #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
