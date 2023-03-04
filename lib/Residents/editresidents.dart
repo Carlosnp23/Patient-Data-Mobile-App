@@ -50,9 +50,11 @@ class DetailResident extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+//
             const SizedBox(
               height: 20,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -77,9 +79,11 @@ class DetailResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 10,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -104,9 +108,11 @@ class DetailResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 10,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -131,9 +137,11 @@ class DetailResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 10,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -158,9 +166,11 @@ class DetailResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 20,
             ),
+//
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(

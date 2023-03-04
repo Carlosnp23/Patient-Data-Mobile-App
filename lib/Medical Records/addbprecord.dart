@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Add_Residents extends StatelessWidget {
-  Add_Residents({super.key});
+class Add_BP_Record extends StatelessWidget {
+  Add_BP_Record({super.key});
 
   final _textName = TextEditingController();
   final _textAge = TextEditingController();
@@ -14,45 +14,36 @@ class Add_Residents extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Residents"),
+        title: const Text("Add BP Record"),
       ),
       body: Center(
         child: Column(
           children: [
 //
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
 //
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: TextFormField(
-                keyboardType: TextInputType.name,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                  label: const Text("Name"),
-                  hintText: "Name",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      // Clear whats currently in the textfield
-                      _textName.clear();
-                    },
-                    icon: const Icon(Icons.clear),
-                  ),
-                ),
-              ),
+              child: const Text("Select Resident"),
+              onPressed: () {
+                // Select Resident
+              },
             ),
 //
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
 //
+
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -60,41 +51,12 @@ class Add_Residents extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.datetime,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Age"),
-                  hintText: "Age",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      // Clear whats currently in the textfield
-                      _textAge.clear();
-                    },
-                    icon: const Icon(Icons.clear),
-                  ),
-                ),
-              ),
-            ),
-//
-            const SizedBox(
-              height: 10,
-            ),
-//
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                  label: const Text("Emergency Contact"),
-                  hintText: "Emergency Contact",
+                  label: const Text("Date / Time"),
+                  hintText: "Date / Time",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -108,7 +70,7 @@ class Add_Residents extends StatelessWidget {
             ),
 //
             const SizedBox(
-              height: 10,
+              height: 25,
             ),
 //
             Container(
@@ -118,12 +80,12 @@ class Add_Residents extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
-                keyboardType: TextInputType.streetAddress,
+                keyboardType: TextInputType.text,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Address"),
-                  hintText: "Address",
+                  label: const Text("BP Reading"),
+                  hintText: "BP Reading",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -149,7 +111,7 @@ class Add_Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("SAVE"),
+              child: const Text("Save BP Record"),
               onPressed: () {
                 // SAVE
               },

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/Residents/addresidents.dart';
-import 'package:patient_data_mobileapp/Residents/editresidents.dart';
-import 'package:patient_data_mobileapp/Residents/viewresidents.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/bloodpressure.dart';
 
-class Residents extends StatelessWidget {
-  const Residents({super.key});
+// ignore: camel_case_types
+class Medical_Records extends StatelessWidget {
+  const Medical_Records({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Residents"),
+        title: const Text("Medical Records"),
       ),
       body: Center(
         child: Column(
@@ -29,11 +28,13 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Add Residents"),
+              child: const Text("Blood Pressure"),
               onPressed: () {
-                // Navigation to Add residents.
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Add_Residents()));
+                // Navigation to Blood Pressure.
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Blood_Pressure()));
               },
             ),
 //
@@ -50,13 +51,11 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Edit Residents"),
+              child: const Text("Respiratory Rate"),
               onPressed: () {
-                // Navigation to Edit Residents.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Edit_Residents()));
+                // Navigation to Respiratory Rate.
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => const Respiratory_Rate()));
               },
             ),
 //
@@ -73,13 +72,32 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Resident List"),
+              child: const Text("Blood Oxygen Level"),
               onPressed: () {
-                // Navigation to Resident List.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const View_Resident()));
+                // Navigation to Blood Oxygen Level.
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => const Blood_Oxygen_Level()));
+              },
+            ),
+//
+            const SizedBox(
+              height: 20,
+            ),
+//
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              child: const Text("Heart Beat Rate"),
+              onPressed: () {
+                // Navigation to Heart Beat Rate.
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => const Heart_Beat_Rate()));
               },
             )
           ],

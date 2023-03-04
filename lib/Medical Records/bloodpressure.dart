@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/Residents/addresidents.dart';
-import 'package:patient_data_mobileapp/Residents/editresidents.dart';
-import 'package:patient_data_mobileapp/Residents/viewresidents.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/addbprecord.dart';
 
-class Residents extends StatelessWidget {
-  const Residents({super.key});
+// ignore: camel_case_types
+class Blood_Pressure extends StatelessWidget {
+  const Blood_Pressure({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Residents"),
+        title: const Text("Blood Pressure"),
       ),
       body: Center(
         child: Column(
@@ -29,11 +28,11 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Add Residents"),
+              child: const Text("Add BP Record"),
               onPressed: () {
-                // Navigation to Add residents.
+                // Navigation to Add BP Record.
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Add_Residents()));
+                    MaterialPageRoute(builder: (context) => Add_BP_Record()));
               },
             ),
 //
@@ -50,13 +49,11 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Edit Residents"),
+              child: const Text("Edit BP Record"),
               onPressed: () {
-                // Navigation to Edit Residents.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Edit_Residents()));
+                // Navigation to Edit BP Record.
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => const Edit_BP_Record()));
               },
             ),
 //
@@ -73,15 +70,13 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Resident List"),
+              child: const Text("BP Lsit"),
               onPressed: () {
-                // Navigation to Resident List.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const View_Resident()));
+                // Navigation to BP Lsit.
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => const BP_Lsit()));
               },
-            )
+            ),
           ],
         ),
       ),

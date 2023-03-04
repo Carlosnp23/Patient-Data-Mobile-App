@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/medicalrecords.dart';
 import 'package:patient_data_mobileapp/Residents/residents.dart';
 
 class Dashboard extends StatelessWidget {
@@ -47,6 +48,10 @@ class Dashboard extends StatelessWidget {
               child: const Text("Medical Records"),
               onPressed: () {
                 // Navigation to Medical Records.
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Medical_Records()));
               },
             ),
             const SizedBox(

@@ -50,9 +50,11 @@ class ViewResident extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
+//
             const SizedBox(
               height: 20,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -79,9 +81,11 @@ class ViewResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 15,
             ),
+//
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -108,9 +112,11 @@ class ViewResident extends StatelessWidget {
                 ),
               ),
             ),
+//
             const SizedBox(
               height: 30,
             ),
+//
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
