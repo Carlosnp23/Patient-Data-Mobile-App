@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Edit_BP_Record extends StatelessWidget {
-  const Edit_BP_Record({super.key});
+class Edit_RP_Record extends StatelessWidget {
+  const Edit_RP_Record({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Edit BP Record"),
+          title: const Text("Edit RP Record"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -122,7 +122,7 @@ class Resident_Record extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Record No. #$index"),
+        title: Text("Edit RP Record No. #$index"),
       ),
       body: Center(
         child: Column(
@@ -201,8 +201,8 @@ class Resident_Record extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("BP Reading"),
-                  hintText: "BP Reading #$index",
+                  label: const Text("RP Reading"),
+                  hintText: "RP Reading #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {

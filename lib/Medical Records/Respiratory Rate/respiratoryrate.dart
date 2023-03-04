@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/Medical%20Records/addbprecord.dart';
-import 'package:patient_data_mobileapp/Medical%20Records/bplist.dart';
-import 'package:patient_data_mobileapp/Medical%20Records/editbprecord.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/Respiratory%20Rate/addrprecord.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/Respiratory%20Rate/editrprecord.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/Respiratory%20Rate/rplist.dart';
 
 // ignore: camel_case_types
-class Blood_Pressure extends StatelessWidget {
-  const Blood_Pressure({super.key});
+class Respiratory_Rate extends StatelessWidget {
+  const Respiratory_Rate({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Blood Pressure"),
+        title: const Text("Respiratory Rate"),
       ),
       body: Center(
         child: Column(
@@ -30,11 +30,11 @@ class Blood_Pressure extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Add BP Record"),
+              child: const Text("Add RP Record"),
               onPressed: () {
-                // Navigation to Add BP Record.
+                // Navigation to Add RP Record.
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Add_BP_Record()));
+                    MaterialPageRoute(builder: (context) => Add_RP_Record()));
               },
             ),
 //
@@ -51,13 +51,13 @@ class Blood_Pressure extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Edit BP Record"),
+              child: const Text("Edit RP Record"),
               onPressed: () {
-                // Navigation to Edit BP Record.
+                // Navigation to Edit RP Record.
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const Edit_BP_Record()));
+                        builder: (context) => const Edit_RP_Record()));
               },
             ),
 //
@@ -74,11 +74,11 @@ class Blood_Pressure extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("BP Lsit"),
+              child: const Text("RP Lsit"),
               onPressed: () {
-                // Navigation to BP Lsit.
+                // Navigation to RP Lsit.
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const BP_List()));
+                    MaterialPageRoute(builder: (context) => const RP_List()));
               },
             ),
           ],

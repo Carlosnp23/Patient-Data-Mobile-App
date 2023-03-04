@@ -1,21 +1,42 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Edit_Residents extends StatelessWidget {
-  const Edit_Residents({super.key});
+class Edit_BP_Record extends StatelessWidget {
+  const Edit_BP_Record({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Edit Residents"),
-      ),
-      body: _buildListView(context),
-    );
+        appBar: AppBar(
+          title: const Text("Edit BP Record"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+//
+              const SizedBox(
+                height: 30,
+              ),
+//
+              const Align(
+                  alignment: Alignment(-0.8, -0.5),
+                  child: Text("Select Resident:",
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold))),
+//
+              const SizedBox(
+                height: 30,
+              ),
+//
+              Expanded(flex: 2, child: _buildSelectResident(context)),
+            ],
+          ),
+        ));
   }
 }
 
-ListView _buildListView(BuildContext context) {
+ListView _buildSelectResident(BuildContext context) {
   return ListView.builder(
     itemCount: 16,
     itemBuilder: (_, index) {
@@ -24,28 +45,84 @@ ListView _buildListView(BuildContext context) {
         leading: const Icon(Icons.person),
         trailing: const Icon(Icons.arrow_forward),
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DetailResident(index)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DetailResidentRecord(index)));
         },
       );
     },
   );
 }
 
-class DetailResident extends StatelessWidget {
+class DetailResidentRecord extends StatelessWidget {
   final int index;
-  DetailResident(this.index, {super.key});
-
-  final _textName = TextEditingController();
-  final _textAge = TextEditingController();
-  final _textAddress = TextEditingController();
-  final _textEmergencyContact = TextEditingController();
+  const DetailResidentRecord(this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("The Details Resident"),
+        title: const Text("Edit BP Record"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+//
+            const SizedBox(
+              height: 30,
+            ),
+//
+            const Align(
+                alignment: Alignment(-0.8, -0.5),
+                child: Text("Select Record:",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+//
+            const SizedBox(
+              height: 30,
+            ),
+//
+            Expanded(flex: 2, child: _buildSelectRecord(context)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+ListView _buildSelectRecord(BuildContext context) {
+  return ListView.builder(
+    itemCount: 16,
+    itemBuilder: (_, index) {
+      return ListTile(
+        title: Text('Record #$index'),
+        leading: const Icon(Icons.person),
+        trailing: const Icon(Icons.arrow_forward),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Resident_Record(index)));
+        },
+      );
+    },
+  );
+}
+
+// ignore: camel_case_types
+class Resident_Record extends StatelessWidget {
+  final int index;
+  Resident_Record(this.index, {super.key});
+
+  final _textName = TextEditingController();
+  final _textMedicalRecordNo = TextEditingController();
+  final _textBPReading = TextEditingController();
+  final _textDateTime = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Edit BP Record No. #$index"),
       ),
       body: Center(
         child: Column(
@@ -67,7 +144,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Name"),
-                  hintText: "Name #$index",
+                  hintText: "Resident #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -95,13 +172,13 @@ class DetailResident extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Age"),
-                  hintText: "Age #$index",
+                  label: const Text("Medical Record No."),
+                  hintText: "Record #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textAge.clear();
+                      _textMedicalRecordNo.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -120,17 +197,17 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.text,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Emergency Contact"),
-                  hintText: "Contact #$index",
+                  label: const Text("BP Reading"),
+                  hintText: "BP Reading #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textEmergencyContact.clear();
+                      _textBPReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -149,17 +226,17 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
-                keyboardType: TextInputType.streetAddress,
+                keyboardType: TextInputType.datetime,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Address"),
-                  hintText: "Address #$index",
+                  label: const Text("Date / Time"),
+                  hintText: "Date / Time #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textAddress.clear();
+                      _textDateTime.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),

@@ -1,51 +1,50 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class View_Resident extends StatelessWidget {
-  const View_Resident({super.key});
+class RP_List extends StatelessWidget {
+  const RP_List({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("View Residents"),
+        title: const Text("RP Record List"),
       ),
-      body: _buildListView(context),
+      body: _buildBPRecordList(context),
     );
   }
 }
 
-ListView _buildListView(BuildContext context) {
+ListView _buildBPRecordList(BuildContext context) {
   return ListView.builder(
     itemCount: 16,
     itemBuilder: (_, index) {
       return ListTile(
-        title: Text("Resident #$index"),
+        title: Text('Record #$index'),
+        subtitle: Text("Resident #$index"),
         leading: const Icon(Icons.person),
         trailing: const Icon(Icons.arrow_forward),
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ViewResident(index)));
+              MaterialPageRoute(builder: (context) => ResidentRecord(index)));
         },
       );
     },
   );
 }
 
-class ViewResident extends StatelessWidget {
+class ResidentRecord extends StatelessWidget {
   final int index;
-  ViewResident(this.index, {super.key});
+  ResidentRecord(this.index, {super.key});
 
-  // ignore: non_constant_identifier_names
-  final _textResident_Details = TextEditingController();
-  // ignore: non_constant_identifier_names
-  final _textMedical_Records = TextEditingController();
+  final _textResidentDetails = TextEditingController();
+  final _textBPReadingInfo = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Resident #$index"),
+        title: Text("Record #$index"),
       ),
       body: Center(
         child: ListView(
@@ -64,7 +63,7 @@ class ViewResident extends StatelessWidget {
               child: TextFormField(
                 keyboardType: TextInputType.multiline,
                 minLines: 1,
-                maxLines: 30,
+                maxLines: 10,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -74,7 +73,7 @@ class ViewResident extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textResident_Details.clear();
+                      _textResidentDetails.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -83,7 +82,7 @@ class ViewResident extends StatelessWidget {
             ),
 //
             const SizedBox(
-              height: 15,
+              height: 25,
             ),
 //
             Container(
@@ -93,19 +92,17 @@ class ViewResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: 30,
+                keyboardType: TextInputType.text,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
-                  label: const Text("Medical Records"),
-                  hintText: "Resident #$index Medical Records",
+                  label: const Text("RP Reading Info"),
+                  hintText: "Record #$index - Date/Time",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textMedical_Records.clear();
+                      _textBPReadingInfo.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -114,7 +111,7 @@ class ViewResident extends StatelessWidget {
             ),
 //
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
 //
             ElevatedButton(
@@ -126,9 +123,9 @@ class ViewResident extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Delete Resident"),
+              child: const Text("Update"),
               onPressed: () {
-                // Delete Resident
+                // Update
               },
             )
           ],
