@@ -14,9 +14,11 @@ class Dashboard extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+//
             const SizedBox(
               height: 200,
             ),
+//
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
@@ -33,9 +35,11 @@ class Dashboard extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const Residents()));
               },
             ),
+//
             const SizedBox(
               height: 20,
             ),
+//
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
@@ -54,9 +58,11 @@ class Dashboard extends StatelessWidget {
                         builder: (context) => const Medical_Records()));
               },
             ),
+//
             const SizedBox(
               height: 120,
             ),
+//
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(

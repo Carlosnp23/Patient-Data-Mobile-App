@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 class Add_BP_Record extends StatelessWidget {
   Add_BP_Record({super.key});
 
-  final _textName = TextEditingController();
-  final _textAge = TextEditingController();
-  final _textAddress = TextEditingController();
-  final _textEmergencyContact = TextEditingController();
+  final _textDateTime = TextEditingController();
+  final _textBPReading = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +59,7 @@ class Add_BP_Record extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textEmergencyContact.clear();
+                      _textDateTime.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -90,7 +88,7 @@ class Add_BP_Record extends StatelessWidget {
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textAddress.clear();
+                      _textBPReading.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),

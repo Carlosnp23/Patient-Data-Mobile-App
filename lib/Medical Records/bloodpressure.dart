@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/Medical%20Records/addbprecord.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/editbprecord.dart';
 
 // ignore: camel_case_types
 class Blood_Pressure extends StatelessWidget {
@@ -52,8 +53,10 @@ class Blood_Pressure extends StatelessWidget {
               child: const Text("Edit BP Record"),
               onPressed: () {
                 // Navigation to Edit BP Record.
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) => const Edit_BP_Record()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Edit_BP_Record()));
               },
             ),
 //
