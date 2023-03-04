@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/addresidents.dart';
+import 'package:patient_data_mobileapp/Residents/addresidents.dart';
+import 'package:patient_data_mobileapp/Residents/editresidents.dart';
+import 'package:patient_data_mobileapp/Residents/viewresidents.dart';
 
 class Residents extends StatelessWidget {
   const Residents({super.key});
@@ -46,7 +48,11 @@ class Residents extends StatelessWidget {
               ),
               child: const Text("Edit Residents"),
               onPressed: () {
-                // Navigation to Medical Records.
+                // Navigation to Edit Residents.
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Edit_Residents()));
               },
             ),
             const SizedBox(
@@ -63,7 +69,11 @@ class Residents extends StatelessWidget {
               ),
               child: const Text("Resident List"),
               onPressed: () {
-                // Log out.
+                // Navigation to Resident List.
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const View_Resident()));
               },
             )
           ],

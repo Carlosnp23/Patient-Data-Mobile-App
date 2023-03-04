@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -19,7 +20,7 @@ class Add_Residents extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             Container(
               decoration: BoxDecoration(
@@ -46,7 +47,7 @@ class Add_Residents extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               decoration: BoxDecoration(
@@ -73,7 +74,7 @@ class Add_Residents extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               decoration: BoxDecoration(
@@ -100,7 +101,7 @@ class Add_Residents extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               decoration: BoxDecoration(
@@ -140,7 +141,7 @@ class Add_Residents extends StatelessWidget {
               ),
               child: const Text("SAVE"),
               onPressed: () {
-                // Log out.
+                // SAVE
               },
             )
           ],

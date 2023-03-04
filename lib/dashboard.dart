@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/residents.dart';
+import 'package:patient_data_mobileapp/Residents/residents.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
