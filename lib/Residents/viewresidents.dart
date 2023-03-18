@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:patient_data_mobileapp/Residents/editresidents.dart';
 import 'package:patient_data_mobileapp/patientModel.dart';
 
 // ignore: camel_case_types
@@ -36,7 +37,6 @@ class View_Resident extends StatelessWidget {
         leading: const CircleAvatar(child: Icon(Icons.person)),
         title: Text(patient.name),
         subtitle: Text(patient.address),
-        onTap: () {},
       );
 
   Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
