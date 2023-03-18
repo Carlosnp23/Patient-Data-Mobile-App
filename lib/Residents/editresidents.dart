@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/patientModel.dart';
 
@@ -13,11 +12,41 @@ class Edit_Residents extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Edit Residents"),
       ),
-      body: _buildListView(context),
+      //    body: _buildListView(context),
+
+      body: StreamBuilder<List<Patient>>(
+          stream: readPatients(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong! ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              final patients = snapshot.data!;
+
+              return ListView(
+                children: patients.map(buildPatient).toList(),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
+
+  Widget buildPatient(Patient patient) => ListTile(
+        leading: const CircleAvatar(child: Icon(Icons.person)),
+        title: Text(patient.name),
+        subtitle: Text(patient.address),
+        onTap: () {},
+      );
+
+  Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
+      .collection('Patient')
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Patient.fromJson(doc.data())).toList());
 }
 
+/*
 ListView _buildListView(BuildContext context) {
   return ListView.builder(
     itemCount: 16,
@@ -34,10 +63,10 @@ ListView _buildListView(BuildContext context) {
     },
   );
 }
+*/
 
 class DetailResident extends StatelessWidget {
-  final int index;
-  DetailResident(this.index, {super.key});
+  DetailResident({super.key});
 
   final _textName = TextEditingController();
   final _textAge = TextEditingController();
@@ -70,7 +99,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Name"),
-                  hintText: "Name #$index",
+                  //               hintText: "Name #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -99,7 +128,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Age"),
-                  hintText: "Age #$index",
+                  //              hintText: "Age #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -128,7 +157,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Emergency Contact"),
-                  hintText: "Contact #$index",
+                  //              hintText: "Contact #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -157,7 +186,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Address"),
-                  hintText: "Address #$index",
+                  //              hintText: "Address #$index",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -193,11 +222,4 @@ class DetailResident extends StatelessWidget {
       ),
     );
   }
-
-  Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
-      .collection('Patient')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => Patient.fromJson(doc.data())).toList());
 }
-

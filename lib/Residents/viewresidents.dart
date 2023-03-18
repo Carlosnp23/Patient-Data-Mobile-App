@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:patient_data_mobileapp/patientModel.dart';
 
 // ignore: camel_case_types
 class View_Resident extends StatelessWidget {
@@ -10,11 +12,41 @@ class View_Resident extends StatelessWidget {
       appBar: AppBar(
         title: const Text("View Residents"),
       ),
-      body: _buildListView(context),
+      //    body: _buildListView(context),
+
+      body: StreamBuilder<List<Patient>>(
+          stream: readPatients(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong! ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              final patients = snapshot.data!;
+
+              return ListView(
+                children: patients.map(buildPatient).toList(),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
+
+  Widget buildPatient(Patient patient) => ListTile(
+        leading: const CircleAvatar(child: Icon(Icons.person)),
+        title: Text(patient.name),
+        subtitle: Text(patient.address),
+        onTap: () {},
+      );
+
+  Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
+      .collection('Patient')
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Patient.fromJson(doc.data())).toList());
 }
 
+/*
 ListView _buildListView(BuildContext context) {
   return ListView.builder(
     itemCount: 16,
@@ -31,6 +63,7 @@ ListView _buildListView(BuildContext context) {
     },
   );
 }
+*/
 
 class ViewResident extends StatelessWidget {
   final int index;
