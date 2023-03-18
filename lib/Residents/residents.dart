@@ -53,10 +53,8 @@ class Residents extends StatelessWidget {
               child: const Text("Edit Residents"),
               onPressed: () {
                 // Navigation to Edit Residents.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Edit_Residents()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Edit_Residents()));
               },
             ),
 //

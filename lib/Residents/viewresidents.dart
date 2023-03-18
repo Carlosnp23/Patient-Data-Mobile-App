@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/Residents/editresidents.dart';
 import 'package:patient_data_mobileapp/patientModel.dart';
 
 // ignore: camel_case_types

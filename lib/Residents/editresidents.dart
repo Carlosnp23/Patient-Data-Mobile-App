@@ -1,83 +1,94 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/patientModel.dart';
 
-// ignore: camel_case_types
+// ignore: must_be_immutable, camel_case_types
 class Edit_Residents extends StatelessWidget {
-  const Edit_Residents({super.key});
+  Edit_Residents({super.key});
+
+  String getID = '';
+  String name = '';
+  String age = '';
+  String contact = '';
+  String address = '';
+
+  final CollectionReference _patient =
+      FirebaseFirestore.instance.collection('Patient');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit Residents"),
+        title: const Text("Residents"),
       ),
       //    body: _buildListView(context),
 
-      body: StreamBuilder<List<Patient>>(
-          stream: readPatients(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text('Something went wrong! ${snapshot.error}');
-            } else if (snapshot.hasData) {
-              final patients = snapshot.data!;
+      body: StreamBuilder(
+        stream: _patient.snapshots(), // Build connection
+        builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+          if (streamSnapshot.hasError) {
+            return Text('Something went wrong! ${streamSnapshot.error}');
+          } else if (streamSnapshot.hasData) {
+            return ListView.builder(
+              itemCount: streamSnapshot.data!.docs.length, // Number of rows
+              itemBuilder: (context, index) {
+                final DocumentSnapshot documentSnapshot =
+                    streamSnapshot.data!.docs[index];
+                return Card(
+                  margin: const EdgeInsets.all(10),
+                  child: ListTile(
+                    leading: const CircleAvatar(child: Icon(Icons.person)),
+                    title: Text(documentSnapshot['name']),
+                    subtitle: Text(documentSnapshot['address']),
+                    onTap: () {
+                      getID = documentSnapshot['id']; // Get the ID
+                      name = documentSnapshot['name']; // Get Name
+                      age = documentSnapshot['age']; // Get Age
+                      contact = documentSnapshot[
+                          'emergency_contact']; // Get Emergency Contact
+                      address = documentSnapshot['address']; // Get Address
 
-              return ListView(
-                children: patients.map(buildPatient).toList(),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailResident(
+                                  index, getID, name, age, contact, address)));
+                    },
+                  ),
+                );
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
-
-  Widget buildPatient(Patient patient) => ListTile(
-        leading: const CircleAvatar(child: Icon(Icons.person)),
-        title: Text(patient.name),
-        subtitle: Text(patient.address),
-        onTap: () {},
-      );
-
-  Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
-      .collection('Patient')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => Patient.fromJson(doc.data())).toList());
 }
 
-/*
-ListView _buildListView(BuildContext context) {
-  return ListView.builder(
-    itemCount: 16,
-    itemBuilder: (_, index) {
-      return ListTile(
-        title: Text('Resident #$index'),
-        leading: const Icon(Icons.person),
-        trailing: const Icon(Icons.arrow_forward),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DetailResident(index)));
-        },
-      );
-    },
-  );
-}
-*/
-
+// ignore: must_be_immutable
 class DetailResident extends StatelessWidget {
-  DetailResident({super.key});
+  final String getID;
+  String name;
+  String age;
+  String contact;
+  String address;
 
-  final _textName = TextEditingController();
-  final _textAge = TextEditingController();
-  final _textAddress = TextEditingController();
-  final _textEmergencyContact = TextEditingController();
+  DetailResident(
+      int index, this.getID, this.name, this.age, this.contact, this.address,
+      {super.key});
+
+  final _textNameDetail = TextEditingController();
+  final _textAgeDetail = TextEditingController();
+  final _textAddressDetail = TextEditingController();
+  final _textEmergencyContactDetail = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("The Details Resident"),
+        title: const Text("Edit Resident"),
       ),
       body: Center(
         child: Column(
@@ -94,17 +105,18 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                controller: _textNameDetail,
                 keyboardType: TextInputType.name,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Name"),
-                  //               hintText: "Name #$index",
+                  hintText: name,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textName.clear();
+                      _textNameDetail.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -123,17 +135,18 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                controller: _textAgeDetail,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Age"),
-                  //              hintText: "Age #$index",
+                  hintText: age,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textAge.clear();
+                      _textAgeDetail.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -152,17 +165,18 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                controller: _textEmergencyContactDetail,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Emergency Contact"),
-                  //              hintText: "Contact #$index",
+                  hintText: contact,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textEmergencyContact.clear();
+                      _textEmergencyContactDetail.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -181,17 +195,18 @@ class DetailResident extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                controller: _textAddressDetail,
                 keyboardType: TextInputType.streetAddress,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Address"),
-                  //              hintText: "Address #$index",
+                  hintText: address,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
                       // Clear whats currently in the textfield
-                      _textAddress.clear();
+                      _textAddressDetail.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -215,6 +230,31 @@ class DetailResident extends StatelessWidget {
               child: const Text("Update"),
               onPressed: () {
                 // Update
+                final docPatient =
+                    FirebaseFirestore.instance.collection('Patient').doc(getID);
+
+                if (_textNameDetail.text == "") {
+                  _textNameDetail.text = name;
+                }
+                if (_textAgeDetail.text == "") {
+                  _textAgeDetail.text = age;
+                }
+                if (_textEmergencyContactDetail.text == "") {
+                  _textEmergencyContactDetail.text = contact;
+                }
+                if (_textAddressDetail.text == "") {
+                  _textAddressDetail.text = address;
+                }
+
+                docPatient.update({
+                  'name': _textNameDetail.text,
+                  'age': _textAgeDetail.text,
+                  'emergency_contact': _textEmergencyContactDetail.text,
+                  'address': _textAddressDetail.text,
+                });
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Edit_Residents()));
               },
             )
           ],
