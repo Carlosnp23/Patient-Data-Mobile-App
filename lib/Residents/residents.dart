@@ -74,10 +74,8 @@ class Residents extends StatelessWidget {
               child: const Text("Resident List"),
               onPressed: () {
                 // Navigation to Resident List.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const View_Resident()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => View_Resident()));
               },
             )
           ],

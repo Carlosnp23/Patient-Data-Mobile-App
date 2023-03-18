@@ -20,8 +20,6 @@ class Edit_Residents extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Residents"),
       ),
-      //    body: _buildListView(context),
-
       body: StreamBuilder(
         stream: _patient.snapshots(), // Build connection
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {

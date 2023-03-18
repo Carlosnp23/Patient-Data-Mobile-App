@@ -1,10 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/patientModel.dart';
+import 'package:patient_data_mobileapp/Residents/editresidents.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class View_Resident extends StatelessWidget {
-  const View_Resident({super.key});
+  View_Resident({super.key});
+
+  String getID = '';
+  String name = '';
+
+  final CollectionReference _patient =
+      FirebaseFirestore.instance.collection('Patient');
 
   @override
   Widget build(BuildContext context) {
@@ -12,61 +18,53 @@ class View_Resident extends StatelessWidget {
       appBar: AppBar(
         title: const Text("View Residents"),
       ),
-      //    body: _buildListView(context),
+      body: StreamBuilder(
+        stream: _patient.snapshots(), // Build connection
+        builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+          if (streamSnapshot.hasError) {
+            return Text('Something went wrong! ${streamSnapshot.error}');
+          } else if (streamSnapshot.hasData) {
+            return ListView.builder(
+              itemCount: streamSnapshot.data!.docs.length, // Number of rows
+              itemBuilder: (context, index) {
+                final DocumentSnapshot documentSnapshot =
+                    streamSnapshot.data!.docs[index];
+                return Card(
+                  margin: const EdgeInsets.all(10),
+                  child: ListTile(
+                    leading: const CircleAvatar(child: Icon(Icons.person)),
+                    title: Text(documentSnapshot['name']),
+                    subtitle: Text(documentSnapshot['address']),
+                    onTap: () {
+                      getID = documentSnapshot['id']; // Get the ID
+                      name = documentSnapshot['name']; // Get Name
 
-      body: StreamBuilder<List<Patient>>(
-          stream: readPatients(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text('Something went wrong! ${snapshot.error}');
-            } else if (snapshot.hasData) {
-              final patients = snapshot.data!;
-
-              return ListView(
-                children: patients.map(buildPatient).toList(),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ViewResident(index, getID, name)));
+                    },
+                  ),
+                );
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
-
-  Widget buildPatient(Patient patient) => ListTile(
-        leading: const CircleAvatar(child: Icon(Icons.person)),
-        title: Text(patient.name),
-        subtitle: Text(patient.address),
-      );
-
-  Stream<List<Patient>> readPatients() => FirebaseFirestore.instance
-      .collection('Patient')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => Patient.fromJson(doc.data())).toList());
 }
 
-/*
-ListView _buildListView(BuildContext context) {
-  return ListView.builder(
-    itemCount: 16,
-    itemBuilder: (_, index) {
-      return ListTile(
-        title: Text("Resident #$index"),
-        leading: const Icon(Icons.person),
-        trailing: const Icon(Icons.arrow_forward),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ViewResident(index)));
-        },
-      );
-    },
-  );
-}
-*/
-
+// ignore: must_be_immutable
 class ViewResident extends StatelessWidget {
   final int index;
-  ViewResident(this.index, {super.key});
+  final String getID;
+  String name;
+  ViewResident(this.index, this.getID, this.name, {super.key});
 
   // ignore: non_constant_identifier_names
   final _textResident_Details = TextEditingController();
@@ -77,7 +75,7 @@ class ViewResident extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Resident #$index"),
+        title: Text(name),
       ),
       body: Center(
         child: ListView(
@@ -101,7 +99,7 @@ class ViewResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Resident Details"),
-                  hintText: "Resident #$index Details",
+                  hintText: "Details",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -132,7 +130,7 @@ class ViewResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Medical Records"),
-                  hintText: "Resident #$index Medical Records",
+                  hintText: "Medical Records",
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -161,6 +159,13 @@ class ViewResident extends StatelessWidget {
               child: const Text("Delete Resident"),
               onPressed: () {
                 // Delete Resident
+                final docPatient =
+                    FirebaseFirestore.instance.collection('Patient').doc(getID);
+
+                docPatient.delete();
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Edit_Residents()));
               },
             )
           ],
