@@ -52,6 +52,7 @@ class Medical_Records extends StatelessWidget {
                     subtitle: Text(documentSnapshot['address']),
                     onTap: () {
                       getID = documentSnapshot['id']; // Get the ID
+
                       BP_Record = documentSnapshot['medical_record.BP_Record'];
                       BP_Record_Date =
                           documentSnapshot['medical_record.BP_Record_Date'];

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/Residents/residents.dart';
+import 'package:patient_data_mobileapp/dashboard.dart';
 import 'package:patient_data_mobileapp/patientModel.dart';
 
 // ignore: camel_case_types
@@ -166,11 +167,22 @@ class Add_Residents extends StatelessWidget {
 
                 // Create Patient
                 createPatient(
-                    name: name, age: age, contact: contact, address: address);
+                    name: name,
+                    age: age,
+                    contact: contact,
+                    address: address,
+                    BP_Record: "",
+                    BP_Record_Date: "",
+                    RP_Record: "",
+                    RP_Record_Date: "",
+                    BO_Record: "",
+                    BO_Record_Date: "",
+                    BPM_Record: "",
+                    BPM_Record_Date: "");
 
                 // Navigation to Add residents.
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Residents()));
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
             )
           ],
@@ -183,7 +195,23 @@ class Add_Residents extends StatelessWidget {
       {required String name,
       required int age,
       required int contact,
-      required String address}) async {
+      required String address,
+      // ignore: non_constant_identifier_names
+      required String BP_Record,
+      // ignore: non_constant_identifier_names
+      required String BP_Record_Date,
+      // ignore: non_constant_identifier_names
+      required String RP_Record,
+      // ignore: non_constant_identifier_names
+      required String RP_Record_Date,
+      // ignore: non_constant_identifier_names
+      required String BO_Record,
+      // ignore: non_constant_identifier_names
+      required String BO_Record_Date,
+      // ignore: non_constant_identifier_names
+      required String BPM_Record,
+      // ignore: non_constant_identifier_names
+      required String BPM_Record_Date}) async {
     // Reference to Document
     final docPatient = FirebaseFirestore.instance.collection('Patient').doc();
 
@@ -192,7 +220,15 @@ class Add_Residents extends StatelessWidget {
         name: name,
         age: age,
         emergency_contact: contact,
-        address: address); // Patient
+        address: address,
+        BP_Record: BP_Record,
+        BP_Record_Date: BP_Record_Date,
+        RP_Record: RP_Record,
+        RP_Record_Date: RP_Record_Date,
+        BO_Record: BO_Record,
+        BO_Record_Date: BO_Record_Date,
+        BPM_Record: BPM_Record,
+        BPM_Record_Date: BPM_Record_Date); // Patient
 
     final json = patient.toJson();
 
