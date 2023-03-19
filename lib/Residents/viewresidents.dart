@@ -8,6 +8,7 @@ class View_Resident extends StatelessWidget {
 
   String getID = '';
   String name = '';
+  String address = '';
 
   final CollectionReference _patient =
       FirebaseFirestore.instance.collection('Patient');
@@ -38,12 +39,13 @@ class View_Resident extends StatelessWidget {
                     onTap: () {
                       getID = documentSnapshot['id']; // Get the ID
                       name = documentSnapshot['name']; // Get Name
+                      address = documentSnapshot['address']; // Get Address
 
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  ViewResident(index, getID, name)));
+                                  ViewResident(index, getID, name, address)));
                     },
                   ),
                 );
@@ -64,7 +66,9 @@ class ViewResident extends StatelessWidget {
   final int index;
   final String getID;
   String name;
-  ViewResident(this.index, this.getID, this.name, {super.key});
+  String address;
+
+  ViewResident(this.index, this.getID, this.name, this.address, {super.key});
 
   // ignore: non_constant_identifier_names
   final _textResident_Details = TextEditingController();
@@ -85,60 +89,83 @@ class ViewResident extends StatelessWidget {
               height: 30,
             ),
 //
+
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: TextFormField(
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: 30,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20),
+              margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(20.0),
+              child: InputDecorator(
                 decoration: InputDecoration(
-                  label: const Text("Resident Details"),
-                  hintText: "Details",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      // Clear whats currently in the textfield
-                      _textResident_Details.clear();
-                    },
-                    icon: const Icon(Icons.clear),
+                  labelText: 'Resident Details',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                ),
+                child: Column(
+                  children: [
+                    const Text(
+                      "Name:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+//
+                    const SizedBox(
+                      height: 10,
+                    ),
+//
+                    const Text(
+                      "Address:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      address,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+//
+                    const SizedBox(
+                      height: 10,
+                    ),
+//
+                    const Text(
+                      "Doctor:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    const Text(
+                      "Doctor",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
                 ),
               ),
             ),
-//
-            const SizedBox(
-              height: 15,
-            ),
-//
+
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: TextFormField(
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: 30,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20),
+              margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(20.0),
+              child: InputDecorator(
                 decoration: InputDecoration(
-                  label: const Text("Medical Records"),
-                  hintText: "Medical Records",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      // Clear whats currently in the textfield
-                      _textMedical_Records.clear();
-                    },
-                    icon: const Icon(Icons.clear),
+                  labelText: 'Medical Records',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                ),
+                child: Column(
+                  children: [
+                    const Text(
+                      "Test:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ],
                 ),
               ),
             ),
