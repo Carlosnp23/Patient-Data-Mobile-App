@@ -12,6 +12,7 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Dashboard"),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -54,10 +55,8 @@ class Dashboard extends StatelessWidget {
               child: const Text("Medical Records"),
               onPressed: () {
                 // Navigation to Medical Records.
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Medical_Records()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Medical_Records()));
               },
             ),
 //
