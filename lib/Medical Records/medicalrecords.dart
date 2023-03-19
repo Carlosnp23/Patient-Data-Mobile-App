@@ -316,6 +316,7 @@ class MedicalRecords extends StatelessWidget {
                 final docPatient =
                     FirebaseFirestore.instance.collection('Patient').doc(getID);
 
+                // Update BP, RP, BO, BPM Record
                 docPatient.update({
                   'medical_record.BP_Record': _textBP_Record.text,
                   'medical_record.BP_Record_Date': formattedDate,
