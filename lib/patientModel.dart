@@ -1,9 +1,9 @@
 class Patient {
   String id;
   final String name;
-  final int age;
+  final String age;
   // ignore: non_constant_identifier_names
-  final int emergency_contact;
+  final String emergency_contact;
   final String address;
   // ignore: non_constant_identifier_names
   final String BP_Record;

@@ -7,8 +7,8 @@ class Edit_Residents extends StatelessWidget {
 
   String getID = '';
   String name = '';
-  int age = 0;
-  int contact = 0;
+  String age = '';
+  String contact = '';
   String address = '';
 
   final CollectionReference _patient =
@@ -40,9 +40,9 @@ class Edit_Residents extends StatelessWidget {
                     onTap: () {
                       getID = documentSnapshot['id']; // Get the ID
                       name = documentSnapshot['name']; // Get Name
-                      age = int.parse(documentSnapshot['age']); // Get Age
-                      contact = int.parse(documentSnapshot[
-                          'emergency_contact']); // Get Emergency Contact
+                      age = documentSnapshot['age']; // Get Age
+                      contact = documentSnapshot[
+                          'emergency_contact']; // Get Emergency Contact
                       address = documentSnapshot['address']; // Get Address
 
                       Navigator.push(
@@ -69,8 +69,8 @@ class Edit_Residents extends StatelessWidget {
 class DetailResident extends StatelessWidget {
   final String getID;
   String name;
-  int age;
-  int contact;
+  String age;
+  String contact;
   String address;
 
   DetailResident(
@@ -139,7 +139,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Age"),
-                  hintText: age.toString(),
+                  hintText: age,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -169,7 +169,7 @@ class DetailResident extends StatelessWidget {
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   label: const Text("Emergency Contact"),
-                  hintText: contact.toString(),
+                  hintText: contact,
                   border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -235,10 +235,10 @@ class DetailResident extends StatelessWidget {
                   _textNameDetail.text = name;
                 }
                 if (_textAgeDetail.text == "") {
-                  _textAgeDetail.text = age.toString();
+                  _textAgeDetail.text = age;
                 }
                 if (_textEmergencyContactDetail.text == "") {
-                  _textEmergencyContactDetail.text = contact.toString();
+                  _textEmergencyContactDetail.text = contact;
                 }
                 if (_textAddressDetail.text == "") {
                   _textAddressDetail.text = address;

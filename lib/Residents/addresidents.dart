@@ -161,8 +161,8 @@ class Add_Residents extends StatelessWidget {
                 // SAVE
 
                 final name = _textName.text;
-                final age = int.parse(_textAge.text);
-                final contact = int.parse(_textEmergencyContact.text);
+                final age = _textAge.text;
+                final contact = _textEmergencyContact.text;
                 final address = _textAddress.text;
 
                 // Create Patient
@@ -193,8 +193,8 @@ class Add_Residents extends StatelessWidget {
 
   Future createPatient(
       {required String name,
-      required int age,
-      required int contact,
+      required String age,
+      required String contact,
       required String address,
       // ignore: non_constant_identifier_names
       required String BP_Record,
