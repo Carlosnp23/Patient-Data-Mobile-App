@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "957106272338",
+    "project_id": "patient-data-app",
+    "storage_bucket": "patient-data-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957106272338:android:fe7b9b680d9521104a478b",
+        "android_client_info": {
+          "package_name": "com.example.patient_data_mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957106272338-9sk5e84sb9mt2sgfgkq6m3orclvrjra3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkIi3K_buN9f3x98w2ufzFfJ0XlE5Ob1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957106272338-9sk5e84sb9mt2sgfgkq6m3orclvrjra3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "957106272338-7v6eamk6kjeilshhmm3t7g2uugqbprev.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.patientDataMobileapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
