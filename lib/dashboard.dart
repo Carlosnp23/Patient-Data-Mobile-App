@@ -1,8 +1,8 @@
-import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/Medical%20Records/medicalrecords.dart';
 import 'package:patient_data_mobileapp/Residents/residents.dart';
+import 'package:patient_data_mobileapp/main.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -22,7 +22,7 @@ class Dashboard extends StatelessWidget {
               height: 200,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -31,7 +31,8 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Residents"),
+              icon: const Icon(Icons.people_alt),
+              label: const Text("Residents"),
               onPressed: () {
                 // Navigation to the residents.
                 Navigator.push(context,
@@ -43,7 +44,7 @@ class Dashboard extends StatelessWidget {
               height: 20,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -52,7 +53,8 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Medical Records"),
+              icon: const Icon(Icons.library_books),
+              label: const Text("Medical Records"),
               onPressed: () {
                 // Navigation to Medical Records.
                 Navigator.push(context,
@@ -64,7 +66,7 @@ class Dashboard extends StatelessWidget {
               height: 120,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -73,10 +75,14 @@ class Dashboard extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Logout"),
+              icon: const Icon(Icons.arrow_back),
+              label: const Text("Logout"),
               onPressed: () {
                 // Log out.
-                exit(0);
+                FirebaseAuth.instance.signOut();
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MainPage()));
               },
             )
           ],

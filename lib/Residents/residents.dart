@@ -20,7 +20,7 @@ class Residents extends StatelessWidget {
               height: 200,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -29,7 +29,8 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Add Residents"),
+              icon: const Icon(Icons.add),
+              label: const Text("Add Residents"),
               onPressed: () {
                 // Navigation to Add residents.
                 Navigator.push(context,
@@ -41,7 +42,7 @@ class Residents extends StatelessWidget {
               height: 20,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -50,7 +51,8 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Edit Residents"),
+              icon: const Icon(Icons.edit),
+              label: const Text("Edit Residents"),
               onPressed: () {
                 // Navigation to Edit Residents.
                 Navigator.push(context,
@@ -62,7 +64,7 @@ class Residents extends StatelessWidget {
               height: 20,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -71,7 +73,8 @@ class Residents extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Resident List"),
+              icon: const Icon(Icons.list_alt),
+              label: const Text("Resident List"),
               onPressed: () {
                 // Navigation to Resident List.
                 Navigator.push(context,

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:patient_data_mobileapp/dashboard.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class Medical_Records extends StatelessWidget {
@@ -31,7 +32,7 @@ class Medical_Records extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Medical Records"),
+        title: const Text("Medical Records List"),
       ),
       body: StreamBuilder(
         stream: _patient.snapshots(), // Build connection
@@ -145,6 +146,7 @@ class MedicalRecords extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Medical Records"),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -164,6 +166,7 @@ class MedicalRecords extends StatelessWidget {
                 controller: _textBP_Record,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -195,6 +198,7 @@ class MedicalRecords extends StatelessWidget {
                 controller: _textRP_Record,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -226,6 +230,7 @@ class MedicalRecords extends StatelessWidget {
                 controller: _textBO_Record,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -257,6 +262,7 @@ class MedicalRecords extends StatelessWidget {
                 controller: _textBPM_Record,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -278,7 +284,7 @@ class MedicalRecords extends StatelessWidget {
               height: 20,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -287,7 +293,8 @@ class MedicalRecords extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Update"),
+              icon: const Icon(Icons.update),
+              label: const Text("Update"),
               onPressed: () {
                 // Update
                 DateTime now = DateTime.now();
@@ -331,6 +338,24 @@ class MedicalRecords extends StatelessWidget {
 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Medical_Records()));
+              },
+            ),
+
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              icon: const Icon(Icons.cancel),
+              label: const Text("Cancel"),
+              onPressed: () {
+                // Cancel
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
             )
           ],

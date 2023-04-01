@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:patient_data_mobileapp/Residents/editresidents.dart';
+import 'package:patient_data_mobileapp/dashboard.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class View_Resident extends StatelessWidget {
@@ -71,9 +71,9 @@ class ViewResident extends StatelessWidget {
   ViewResident(this.index, this.getID, this.name, this.address, {super.key});
 
   // ignore: non_constant_identifier_names
-  final _textResident_Details = TextEditingController();
+  //final _textResident_Details = TextEditingController();
   // ignore: non_constant_identifier_names
-  final _textMedical_Records = TextEditingController();
+  //final _textMedical_Records = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +174,7 @@ class ViewResident extends StatelessWidget {
               height: 30,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -183,7 +183,8 @@ class ViewResident extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Delete Resident"),
+              icon: const Icon(Icons.delete),
+              label: const Text("Delete Resident"),
               onPressed: () {
                 // Delete Resident
                 final docPatient =
@@ -192,9 +193,9 @@ class ViewResident extends StatelessWidget {
                 docPatient.delete();
 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Edit_Residents()));
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
-            )
+            ),
           ],
         ),
       ),

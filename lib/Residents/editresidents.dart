@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:patient_data_mobileapp/dashboard.dart';
 
 // ignore: must_be_immutable, camel_case_types
 class Edit_Residents extends StatelessWidget {
@@ -87,6 +88,7 @@ class DetailResident extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit Resident"),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -105,6 +107,7 @@ class DetailResident extends StatelessWidget {
               child: TextFormField(
                 controller: _textNameDetail,
                 keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -135,6 +138,7 @@ class DetailResident extends StatelessWidget {
               child: TextFormField(
                 controller: _textAgeDetail,
                 keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -165,6 +169,7 @@ class DetailResident extends StatelessWidget {
               child: TextFormField(
                 controller: _textEmergencyContactDetail,
                 keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -195,6 +200,7 @@ class DetailResident extends StatelessWidget {
               child: TextFormField(
                 controller: _textAddressDetail,
                 keyboardType: TextInputType.streetAddress,
+                textInputAction: TextInputAction.next,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -216,7 +222,7 @@ class DetailResident extends StatelessWidget {
               height: 20,
             ),
 //
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -225,7 +231,8 @@ class DetailResident extends StatelessWidget {
                 shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
-              child: const Text("Update"),
+              icon: const Icon(Icons.update),
+              label: const Text("Update"),
               onPressed: () {
                 // Update
                 final docPatient =
@@ -253,6 +260,24 @@ class DetailResident extends StatelessWidget {
 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Edit_Residents()));
+              },
+            ),
+
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              icon: const Icon(Icons.cancel),
+              label: const Text("Cancel"),
+              onPressed: () {
+                // Cancel
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
             )
           ],
