@@ -9,6 +9,16 @@ class View_Resident extends StatelessWidget {
   String getID = '';
   String name = '';
   String address = '';
+  String doctor = '';
+
+  String bpRecord = '';
+  String rpRecord = '';
+  String boRecord = '';
+  String bpmRecord = '';
+  String bpRecordDate = '';
+  String rpRecordDate = '';
+  String boRecordDate = '';
+  String bpmRecordDate = '';
 
   final CollectionReference _patient =
       FirebaseFirestore.instance.collection('Patient');
@@ -40,12 +50,39 @@ class View_Resident extends StatelessWidget {
                       getID = documentSnapshot['id']; // Get the ID
                       name = documentSnapshot['name']; // Get Name
                       address = documentSnapshot['address']; // Get Address
+                      doctor = documentSnapshot['doctor']; // Get Doctor
+
+                      // Get Medical Record
+                      bpRecord = documentSnapshot['medical_record.BP_Record'];
+                      bpRecordDate =
+                          documentSnapshot['medical_record.BP_Record_Date'];
+                      rpRecord = documentSnapshot['medical_record.RP_Record'];
+                      rpRecordDate =
+                          documentSnapshot['medical_record.RP_Record_Date'];
+                      boRecord = documentSnapshot['medical_record.BO_Record'];
+                      boRecordDate =
+                          documentSnapshot['medical_record.BO_Record_Date'];
+                      bpmRecord = documentSnapshot['medical_record.BPM_Record'];
+                      bpmRecordDate =
+                          documentSnapshot['medical_record.BPM_Record_Date'];
 
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  ViewResident(index, getID, name, address)));
+                              builder: (context) => ViewResident(
+                                  index,
+                                  getID,
+                                  name,
+                                  address,
+                                  doctor,
+                                  bpRecord,
+                                  bpRecordDate,
+                                  rpRecord,
+                                  rpRecordDate,
+                                  boRecord,
+                                  boRecordDate,
+                                  bpmRecord,
+                                  bpmRecordDate)));
                     },
                   ),
                 );
@@ -67,8 +104,32 @@ class ViewResident extends StatelessWidget {
   final String getID;
   String name;
   String address;
+  String doctor;
 
-  ViewResident(this.index, this.getID, this.name, this.address, {super.key});
+  String bpRecord;
+  String rpRecord;
+  String boRecord;
+  String bpmRecord;
+  String bpRecordDate;
+  String rpRecordDate;
+  String boRecordDate;
+  String bpmRecordDate;
+
+  ViewResident(
+      this.index,
+      this.getID,
+      this.name,
+      this.address,
+      this.doctor,
+      this.bpRecord,
+      this.bpRecordDate,
+      this.rpRecord,
+      this.rpRecordDate,
+      this.boRecord,
+      this.boRecordDate,
+      this.bpmRecord,
+      this.bpmRecordDate,
+      {super.key});
 
   // ignore: non_constant_identifier_names
   //final _textResident_Details = TextEditingController();
@@ -135,9 +196,9 @@ class ViewResident extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
-                    const Text(
-                      "Doctor",
-                      style: TextStyle(fontSize: 15),
+                    Text(
+                      doctor,
+                      style: const TextStyle(fontSize: 15),
                     ),
                   ],
                 ),
@@ -157,13 +218,88 @@ class ViewResident extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      "Test:",
+                      "BP Record:",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     Text(
-                      name,
+                      bpRecord,
                       style: const TextStyle(fontSize: 15),
+                    ),
+                    const Text(
+                      "BP Record Date:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      bpRecordDate,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "RP Record:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      rpRecord,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const Text(
+                      "RP Record Date:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      rpRecordDate,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "BO Record:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      boRecord,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const Text(
+                      "BO Record Date:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      boRecordDate,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "BPM Record:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      bpmRecord,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const Text(
+                      "BPM Record Date:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    Text(
+                      bpmRecordDate,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
