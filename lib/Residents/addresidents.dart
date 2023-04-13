@@ -11,6 +11,7 @@ class Add_Residents extends StatelessWidget {
   final _textAge = TextEditingController();
   final _textAddress = TextEditingController();
   final _textEmergencyContact = TextEditingController();
+  final _textDoctor = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -145,6 +146,37 @@ class Add_Residents extends StatelessWidget {
                 ),
               ),
             ),
+
+            const SizedBox(
+              height: 10,
+            ),
+//
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextFormField(
+                controller: _textDoctor,
+                keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.next,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 20),
+                decoration: InputDecoration(
+                  label: const Text("Doctor"),
+                  hintText: "Doctor",
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      // Clear whats currently in the textfield
+                      _textDoctor.clear();
+                    },
+                    icon: const Icon(Icons.clear),
+                  ),
+                ),
+              ),
+            ),
 //
             const SizedBox(
               height: 20,
@@ -168,6 +200,7 @@ class Add_Residents extends StatelessWidget {
                 final age = _textAge.text;
                 final contact = _textEmergencyContact.text;
                 final address = _textAddress.text;
+                final doctor = _textDoctor.text;
 
                 // Create Patient
                 createPatient(
@@ -175,6 +208,7 @@ class Add_Residents extends StatelessWidget {
                     age: age,
                     contact: contact,
                     address: address,
+                    doctor: doctor,
                     BP_Record: "",
                     BP_Record_Date: "",
                     RP_Record: "",
@@ -200,6 +234,7 @@ class Add_Residents extends StatelessWidget {
       required String age,
       required String contact,
       required String address,
+      required String doctor,
       // ignore: non_constant_identifier_names
       required String BP_Record,
       // ignore: non_constant_identifier_names
@@ -225,6 +260,7 @@ class Add_Residents extends StatelessWidget {
         age: age,
         emergency_contact: contact,
         address: address,
+        doctor: doctor,
         BP_Record: BP_Record,
         BP_Record_Date: BP_Record_Date,
         RP_Record: RP_Record,
