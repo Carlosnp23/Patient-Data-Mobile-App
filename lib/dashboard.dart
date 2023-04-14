@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:patient_data_mobileapp/Medical%20Records/medicalrecords.dart';
+import 'package:patient_data_mobileapp/Medical%20Records/historyofrecord.dart';
 import 'package:patient_data_mobileapp/Residents/residents.dart';
 import 'package:patient_data_mobileapp/main.dart';
 
@@ -59,6 +60,28 @@ class Dashboard extends StatelessWidget {
                 // Navigation to Medical Records.
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Medical_Records()));
+              },
+            ),
+//
+            const SizedBox(
+              height: 20,
+            ),
+//
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal),
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              icon: const Icon(Icons.library_books),
+              label: const Text("Records history"),
+              onPressed: () {
+                // Navigation to Medical Records.
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HistoryOfRecord()));
               },
             ),
 //

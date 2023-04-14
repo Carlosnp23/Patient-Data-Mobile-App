@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:patient_data_mobileapp/dashboard.dart';
 
+import '../patientRecordModel.dart';
+
 // ignore: camel_case_types, must_be_immutable
 class Medical_Records extends StatelessWidget {
   Medical_Records({super.key});
@@ -336,8 +338,34 @@ class MedicalRecords extends StatelessWidget {
                   'medical_record.BPM_Record_Date': formattedDate,
                 });
 
+                String formattedDateRecord =
+                    DateFormat('MM-dd-yyyy - hh:mm a').format(now);
+                String date = formattedDateRecord;
+                final bpRecord = _textBP_Record.text;
+                final rpRecord = _textRP_Record.text;
+                final boRecord = _textBO_Record.text;
+                final bpmRecord = _textBPM_Record.text;
+
+                final docPatientRecords = FirebaseFirestore.instance
+                    .collection('Patient')
+                    .doc(getID)
+                    .collection("Records")
+                    .doc(date);
+
+                final patientRecords = PatientRecords(
+                    id: docPatientRecords.id,
+                    BP_Record: bpRecord,
+                    RP_Record: rpRecord,
+                    BO_Record: boRecord,
+                    BPM_Record: bpmRecord); // Patient Records
+
+                final json = patientRecords.toJson();
+
+                // Create document and write data to FireBase
+                docPatientRecords.set(json);
+
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Medical_Records()));
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
             ),
 
