@@ -327,7 +327,7 @@ class RecordsHistory extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PatientHistoryOfRecord(getID)));
+                        builder: (context) => PatientHistoryOfRecord()));
               },
             ),
           ],

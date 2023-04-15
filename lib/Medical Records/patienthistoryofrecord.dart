@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class PatientHistoryOfRecord extends StatelessWidget {
-  PatientHistoryOfRecord(this.getID, {super.key});
+  PatientHistoryOfRecord({super.key});
 
   String getID = '';
   String date = '';

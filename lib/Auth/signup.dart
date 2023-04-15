@@ -29,6 +29,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Sign Up"),
+          automaticallyImplyLeading: false,
         ),
         body: Padding(
           padding: const EdgeInsets.all(30.0),
